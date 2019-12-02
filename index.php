@@ -14,7 +14,7 @@ abstract class Car extends Vehicule {
     //     echo $this->nbreSiege;
     // }
     public function afficheDate(){
-        echo Clio::DATE_CREATION."<br>";
+        echo self::DATE_CREATION."<br>";
     }  
 }
 
@@ -32,7 +32,7 @@ final class Clio extends Car implements Moteur {
         echo "Ceci est mon imatricaulation : ".$this->imatriculation;
     } 
     public function afficheSiege(){
-        echo Clio::$nbreSiege."<br>";
+        echo self::$nbreSiege."<br>";
     } 
 }
 
@@ -45,6 +45,6 @@ $clio->afficheImma();
 $clio->afficheDate();
 $clio->essence();
 $clio->afficheSiege();
-
+$testnbreroue = $clio;
 
 ?> 
