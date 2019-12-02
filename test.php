@@ -1,41 +1,63 @@
 <?php
-class Users {
-    
-    function __construct($name, $pdv) {
+abstract class Users {
+
+    private $name;
+    protected $pdv;
+
+    protected function __construct(string $name, int $pdv) {
         $this->name = $name;
         $this->pdv = $pdv;
-        // echo "Je m'appelle"." ".$name." "."et j'ai"." ".$pdv." "."points de vie"."<br>";
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }
 
-interface Armor {
- function equipement($armure, $casque);
+interface Armor 
+{
+    function equipement(int $armure, int $casque);
 }
 
-class Personnage extends Users implements Armor {
+final class Personnage extends Users implements Armor {
 
-    function equipement($armure, $casque){
+    private $type;
+    private $casque;
+    private $armure;
+
+    function equipement(int $armure, int $casque){
         $this->shield = $casque + $armure;
     }
-    function __construct($name, $pdv, $type, $armure, $casque) {
+    function __construct(string $name, int $pdv, int $type, int $armure, int $casque) {
+
+        $listTypes = [
+            "Guerrier",
+            "Archer"
+        ];
+
+        $this->type = $listTypes[$type];
         $this->casque = $casque;
         $this->armure = $armure;
-        $this->equipement($this->armure, $this->casque);
-        $this->type = $type;
-        parent::__construct($name, $pdv);
-        echo "Je m'appelle ".$name.", j'ai ".$pdv." points de vie ";
-        echo "et je suis de type ".$type."<br>";
-        echo $this->shield;
-    }
-   
 
+        $this->equipement($this->armure, $this->casque);
+        parent::__construct($name, $pdv);
+        echo "Je m'appelle ".$this->getName().", j'ai ".$this->pdv." points de vie ";
+        echo "et je suis de type ".$this->type;
+        echo ". Mon point d'armure et de ".$this->shield."<br>";
+    }
 }
 
 
 
 
-$personnage1 = new Personnage("Guillaume",120,"Guerrier",80,20);
+$personnage1 = new Personnage("Guillaume", 120, 0, 80, 20);
 
-$personnage = new Personnage("Clara",150,"Archer",80,20);
+$personnage = new Personnage("Clara",150,1,80,20);
+
+
+
+var_dump($personnage1);
+var_dump($personnage);
 
 ?>
