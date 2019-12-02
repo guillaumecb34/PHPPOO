@@ -1,14 +1,14 @@
 <?php 
-class Vehicule {
+abstract class Vehicule {
 CONST DATE_CREATION = '24/09/1992';
-public $imatriculation;
+protected $imatriculation;
 static public $nbreSiege = 4;
 
 
 }
 
 
-class Car extends Vehicule {
+abstract class Car extends Vehicule {
     // public function modifSiege(){
     //     $this->nbreSiege = 2;
     //     echo $this->nbreSiege;
@@ -22,13 +22,14 @@ interface Moteur {
   public function essence();
 }
 
-class Clio extends Car implements Moteur {
+
+final class Clio extends Car implements Moteur {
     public function essence(){
         echo 'Vroummm <br>';
     }
     public function afficheImma(){
         $this->imatriculation = "123456789 <br>";
-        echo $this->imatriculation;
+        echo "Ceci est mon imatricaulation : ".$this->imatriculation;
     } 
     public function afficheSiege(){
         echo Clio::$nbreSiege."<br>";
@@ -36,7 +37,7 @@ class Clio extends Car implements Moteur {
 }
 
 
-
+echo "<h1>Cours PHP OBJECT</h1>";
 
 $clio = new Clio (); 
 $clio->afficheImma();
@@ -44,5 +45,6 @@ $clio->afficheImma();
 $clio->afficheDate();
 $clio->essence();
 $clio->afficheSiege();
+
 
 ?> 
