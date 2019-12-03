@@ -1,4 +1,7 @@
 <?php
+
+namespace all_test\guigui;
+
 abstract class Users {
 
     private $name;
@@ -51,13 +54,6 @@ final class Personnage extends Users implements Armor {
 
 
 
-$personnage1 = new Personnage("Guillaume", 120, 0, 80, 20);
 
-$personnage = new Personnage("Clara",150,1,80,20);
-
-
-
-var_dump($personnage1);
-var_dump($personnage);
 
 ?>
