@@ -1,7 +1,7 @@
 <?php
     namespace MonApp\Blog;
 
-    final class Article 
+    abstract class Article 
     {
         private $title;
         private $content;
@@ -41,6 +41,8 @@
             $this->setContent($content);
         }
     }
+
+
 
 
 
