@@ -2,7 +2,9 @@
     namespace MonApp\Blog;
 
     abstract class Article 
-    {
+    {   
+        use MonTrait;
+
         private $title;
         private $content;
         CONST DATE_CREATION_IMPRIMERIE = "1450" ;
@@ -33,12 +35,24 @@
 
         public function setTitle(string $title) :void 
         {
+            if (strlen($title) < 5)
+            {
+                throw new \Exception("Titre trop court");
+            } 
             $this->title = $title;
         }
+
 
         public function __construct(string $title, string $content){
             $this->setTitle($title);
             $this->setContent($content);
+        }
+    }
+
+    Trait MonTrait
+    {
+        function testTrait(){
+            echo "test trait";
         }
     }
 

@@ -1,10 +1,20 @@
 <?php
     include 'Article.php';
     include 'ArticleMatch.php';
+    // include 'MonTrait.php';
 
     use \MonApp\Blog;
 
-    $article = new Blog\ArticleMatch("Le Barça surclasse le Réal","1-3","ceci est le contenu");
+    try 
+            {
+                $article = new Blog\ArticleMatch("Leaaaaaaaaaaaa","1-3aaa","ceci est le contenu");
+            } 
+            catch (\Exception $e) 
+            {
+                echo 'Exception reçue : '.$e->getMessage().'<br>';
+            }
+    
+    $article->testTrait();
 
     echo $article::DATE_CREATION_IMPRIMERIE."<br>";
 
